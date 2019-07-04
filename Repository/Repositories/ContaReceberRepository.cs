@@ -46,14 +46,17 @@ WHERE id = @ID";
         public int Inserir(ContaReceber contaReceber)
         {
             SqlCommand comando = Conexao.AbrirConexao();
-            comando.CommandText = @"INSERT INTO contas_receber (nome, data_pagamento, valor, id_categoria, id_cliente)
-OUTPUT INSERTED.ID
-VALUES (@NOME, @DATA_PAGAMENTO, @VALOR, @ID_CATEGORIA, @ID_CLIENTE)";
+            comando.CommandText = @"INSERT INTO contas_receber 
+            (nome, data_pagamento, valor, id_categoria, id_cliente)
+            OUTPUT INSERTED.ID
+            VALUES
+            (@NOME, @DATA_PAGAMENTO, @VALOR, @ID_CATEGORIA, @ID_CLIENTE)";
             comando.Parameters.AddWithValue("@NOME", contaReceber.Nome);
             comando.Parameters.AddWithValue("@DATA_PAGAMENTO", contaReceber.DataPagamento);
             comando.Parameters.AddWithValue("@VALOR", contaReceber.Valor);
             comando.Parameters.AddWithValue("@ID_CATEGORIA", contaReceber.IdCategoria);
             comando.Parameters.AddWithValue("@ID_CLIENTE", contaReceber.IdCliente);
+
             int id = Convert.ToInt32(comando.ExecuteScalar());
             comando.Connection.Close();
             return id;

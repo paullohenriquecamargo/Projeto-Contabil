@@ -25,7 +25,16 @@ namespace View.Controllers
             return View();
         }
 
-        public ActionResult Store(string nome)
+        public ActionResult Cadastro()
+        {
+            CategoriaRepository categoriaRepository = new CategoriaRepository();
+            List<Categoria> categorias = categoriaRepository.ObterTodos();
+            ViewBag.Categorias = categorias;
+
+            return View();
+        }
+
+        public ActionResult Store(string nome, DateTime data)
         {
             ContaReceber contaReceber = new ContaReceber();
             contaReceber.Nome = nome;

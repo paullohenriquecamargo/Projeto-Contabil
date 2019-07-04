@@ -1,9 +1,9 @@
 ﻿
 @{
-    ViewBag.Title = "Store";
+    ViewBag.Title = "Cadastro";
 }
 
-<h2>Cadastro de contas a receber</h2>
+<h3>Cadastro de contas a receber</h3>
 
 <form action="@Url.Action("Store")" method="post">
     <div class="row">
@@ -23,16 +23,34 @@
         <div class="col-12">
             <div class="form-group">
                 <label for="campo-nome">Nome</label>
-                <input type="text" name="nome" id="campo-nome" value="form-control" />
+                <input type="text" name="nome" id="campo-nome" class="form-control" />
             </div>
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label for="campo-data">Data de pagamento</label>
+                <input type="datetime" name="data" id="campo-data" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label for="campo-valor">Valor</label>
+                <input type="number" name="valor" id="campo-valor" class="campo-valor"/>
+            </div>
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-12">
             <button class="btn btn-succes float-right"><i class="fas fa-save"></i> Salvar</button>
         </div>
     </div>
+
 </form>
 
