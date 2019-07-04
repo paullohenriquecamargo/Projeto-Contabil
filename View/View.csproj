@@ -103,6 +103,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CategoriaController.cs" />
+    <Compile Include="Controllers\ContabilidadeController.cs" />
     <Compile Include="Controllers\ContaReceberController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -120,6 +122,12 @@
     <Content Include="Views\ContaReceber\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\ContaReceber\Cadastro.cshtml" />
+    <Content Include="Views\Categoria\Index.cshtml" />
+    <Content Include="Views\Categoria\Editar.cshtml" />
+    <Content Include="Views\Categoria\Cadastro.cshtml" />
+    <Content Include="Views\Contabilidade\Index.cshtml" />
+    <Content Include="Views\Contabilidade\Cadastro.cshtml" />
+    <Content Include="Views\Contabilidade\Editar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
