@@ -45,8 +45,8 @@ namespace View.Controllers
 
         public ActionResult Editar(int id)
         {
-            //Categoria categoria = repository.ObterPeloId(id);
-            //ViewBag.Categoria = categoria;
+            Categoria categoria = repository.ObterPeloId(id);
+            ViewBag.Categoria = categoria;
             return View();
         }
 
