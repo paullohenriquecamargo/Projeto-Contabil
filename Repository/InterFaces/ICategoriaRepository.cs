@@ -1,0 +1,22 @@
+﻿using Model;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Repository.InterFaces
+{
+    interface ICategoriaRepository
+    {
+        int Inserir(Categoria categoria);
+
+        List<Categoria> ObterTodos();
+
+        bool Alterar(Categoria categoria);
+
+        Categoria ObterpeloId(int id);
+
+        bool Apagar(int id);
+    }
+}

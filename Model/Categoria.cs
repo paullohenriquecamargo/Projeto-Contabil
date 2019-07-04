@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Model
 {
-    public class Contabilidade
+    public class Categoria
     {
         public int Id;
         public string Nome;

@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Store";
+}
+
+<h2>Cadastro de contas a receber</h2>
+
+<form action="@Url.Action("Store")" method="post">
+    <div class="row">
+        <div class="form-group">
+            <label for="campo-nome">Categoria</label>
+            <select id="campo=categoria" name="idCategoria" class="form-control">
+                @foreach(Model.Categoria categoria in ViewBag.Categorias)
+                {
+                    <option value="@categoria.Id">@categoria.Nome</option>
+                }
+                <option disabled="disabled" selected="selected">Selecione uma Categoria</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label for="campo-nome">Nome</label>
+                <input type="text" name="nome" id="campo-nome" value="form-control" />
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-12">
+            <button class="btn btn-succes float-right"><i class="fas fa-save"></i> Salvar</button>
+        </div>
+    </div>
+</form>
+
