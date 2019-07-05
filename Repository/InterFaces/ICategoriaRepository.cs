@@ -15,7 +15,7 @@ namespace Repository.InterFaces
 
         bool Alterar(Categoria categoria);
 
-        Categoria ObterpeloId(int id);
+        Categoria ObterPeloId(int id);
 
         bool Apagar(int id);
     }
