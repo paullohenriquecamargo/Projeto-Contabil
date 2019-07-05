@@ -14,27 +14,26 @@ namespace View.Controllers
 
         public ContabilidadeController()
         {
-            repositorio = new ContabilidadeRepository();
-            repositorio.ObterTodos("");
+            repositorio = new ContabilidadeRepository();            
         }
 
         // GET: Contabilidade
         public ActionResult Index()
         {
-            List<Contabilidade> contabilidades = repositorio.ObterTodos("");
+            List<Contabilidade> contabilidades = repositorio.ObterTodos();
             ViewBag.Contabilidades = contabilidades;
             return View();
         }
         public ActionResult Cadastro()
         {
-            CategoriaRepository categoriaRepository = new CategoriaRepository();
-            List<Categoria> categoria = categoriaRepository.ObterTodos();
-            ViewBag.Categorias = categoria;
+            ContabilidadeRepository contabilidadeRepository = new ContabilidadeRepository();
+            List<Contabilidade> contabilidades = contabilidadeRepository.ObterTodos();
+            ViewBag.Contabilidade = contabilidades;
 
             return View();
         }
 
-        public ActionResult Store(int idCategoria, string nome)
+        public ActionResult Store(string nome)
         {
             Contabilidade contabilidades = new Contabilidade();
             contabilidades.Nome = nome;
@@ -51,16 +50,11 @@ namespace View.Controllers
         public ActionResult Editar(int id)
         {
             Contabilidade contabilidade = repositorio.ObterPeloId(id);
-            ViewBag.Contabilidade = contabilidade;
-
-            CategoriaRepository categoriaRepository = new CategoriaRepository();
-            List<Categoria> categorias = categoriaRepository.ObterTodos();
-            ViewBag.Categorias = categorias;
-
+            ViewBag.Contabilidade = contabilidade;                                    
             return View();
         }
 
-        public ActionResult Update(int id, string nome, int idCategoria)
+        public ActionResult Update(int id, string nome)
         {
             Contabilidade contabilidade = new Contabilidade();
             contabilidade.Id = id;

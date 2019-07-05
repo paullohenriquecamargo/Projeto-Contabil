@@ -1,10 +1,9 @@
-﻿
-
-DROP TABLE IF EXISTS contas_receber;
+﻿DROP TABLE IF EXISTS contas_receber;
 DROP TABLE IF EXISTS contas_pagar;
 DROP TABLE IF EXISTS categorias;
 DROP TABLE IF EXISTS clientes;
 DROP TABLE IF EXISTS contabilidades;
+
 
 CREATE TABLE contabilidades (
 	id INT PRIMARY KEY IDENTITY(1,1),
@@ -24,7 +23,7 @@ CREATE TABLE categorias (
 	nome VARCHAR(45)
 );
 
-CREATE TABLE conta_pagar (
+CREATE TABLE contas_pagar (
 	id INT PRIMARY KEY IDENTITY(1,1),
 	id_cliente INT NOT NULL,
 	FOREIGN KEY (id_cliente) REFERENCES clientes(id),
@@ -59,5 +58,5 @@ contas_receber.nome AS 'ContaReceberNome',
 contas_receber.data_pagamento AS 'ContaReceberDataPagamento',
 contas_receber.valor AS 'ContaReceberValor'
 FROM contas_receber
-INNER JOIN clientes ON (contas_receber.id_clientes = clientes.id)
-INNER JOIN categorias ON (contas_receber.id_categorias = categorias.id)
+INNER JOIN clientes ON (contas_receber.id_cliente = clientes.id)
+INNER JOIN categorias ON (contas_receber.id_categoria = categorias.id)
