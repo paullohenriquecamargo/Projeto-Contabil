@@ -18,6 +18,7 @@ namespace Repository.DataBase
 
             SqlCommand comando = new SqlCommand();
             comando.Connection = conexao;
+            comando.Connection.Close();
             return comando;
         }            
     }

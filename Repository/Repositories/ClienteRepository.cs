@@ -11,46 +11,46 @@ using System.Threading.Tasks;
 
 namespace Repository.Repositories
 {
-    public class CategoriaRepository : ICategoriaRepository
+    public class ClienteRepository : IClienteRepository
     {
-        public bool Alterar(Categoria categoria)
+        public bool Alterar(Cliente cliente)
         {
             SqlCommand comando = Conexao.AbrirConexao();
-            comando.CommandText = @"UPDATE categorias SET 
-nome = @NOME
-WHERE id = @ID";
-            comando.Parameters.AddWithValue("@NOME", categoria.Nome);
-            comando.Parameters.AddWithValue("@ID", categoria.Id);
+            comando.CommandText = @"UPDATE clientes SET
+nome = @NOME WHERE id = @ID";
+            comando.Parameters.AddWithValue("@NOME", cliente.Nome);
+            comando.Parameters.AddWithValue("@ID", cliente.Id);
             int quantidade = comando.ExecuteNonQuery();
             comando.Connection.Close();
             return quantidade == 1;
         }
-                                
+
         public bool Apagar(int id)
         {
             SqlCommand comando = Conexao.AbrirConexao();
-            comando.CommandText = @"DELETE FROM categorias WHERE id = @ID";
+            comando.CommandText = "DELETE FROM clientes WHERE id = @ID";
             comando.Parameters.AddWithValue("@ID", id);
             int quantidade = comando.ExecuteNonQuery();
             comando.Connection.Close();
-            return quantidade == 1;            
+            return quantidade == 1;
         }
 
-        public int Inserir(Categoria categoria)
+        public int Inserir(Cliente cliente)
         {
             SqlCommand comando = Conexao.AbrirConexao();
-            comando.CommandText = @"INSERT INTO categorias (nome) 
+            comando.CommandText = @"INSERT INTO clientes (nome)
 OUTPUT INSERTED.ID VALUES (@NOME)";
-            comando.Parameters.AddWithValue("@NOME", categoria.Nome);
+            comando.Parameters.AddWithValue("@NOME", cliente.Nome);
             int id = Convert.ToInt32(comando.ExecuteScalar());
             comando.Connection.Close();
             return id;
+            
         }
-                                
-        public Categoria ObterPeloId(int id)
+
+        public Cliente ObterPeloId(int id)
         {
             SqlCommand comando = Conexao.AbrirConexao();
-            comando.CommandText = @"SELECT * FROM categorias WHERE id = @ID";
+            comando.CommandText = "SELECT * FROM clientes WHERE id = @ID";
             comando.Parameters.AddWithValue("@ID", id);
             DataTable tabela = new DataTable();
             tabela.Load(comando.ExecuteReader());
@@ -60,33 +60,31 @@ OUTPUT INSERTED.ID VALUES (@NOME)";
                 return null;
             }
             DataRow linha = tabela.Rows[0];
-            Categoria categoria = new Categoria();
-            categoria.Id = Convert.ToInt32(linha["id"]);
-            categoria.Nome = linha["nome"].ToString();
-            return categoria;
+            Cliente cliente = new Cliente();
+            cliente.Id = Convert.ToInt32(linha["id"]);
+            cliente.Nome = linha["nome"].ToString();
+            return cliente;
         }
 
-        public List<Categoria> ObterTodos()
+        public List<Cliente> ObterTodos(string pesquisa)
         {
             SqlCommand comando = Conexao.AbrirConexao();
-            comando.CommandText = @"SELECT * FROM categorias";
+            comando.CommandText = "SELECT * FROM clientes";
             DataTable tabela = new DataTable();
             tabela.Load(comando.ExecuteReader());
             comando.Connection.Close();
 
-            List<Categoria> categorias = new List<Categoria>();
+            List<Cliente> clientes = new List<Cliente>();
             foreach(DataRow linha in tabela.Rows)
             {
-                Categoria categoria = new Categoria()
+                Cliente cliente = new Cliente()
                 {
                     Id = Convert.ToInt32(linha["id"]),
                     Nome = linha["nome"].ToString()
                 };
-                categorias.Add(categoria);
+                clientes.Add(cliente);
             }
-            return categorias;
+            return clientes;
         }
-
-       
     }
 }
