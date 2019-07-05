@@ -1,24 +1,14 @@
-﻿DROP TABLE IF EXISTS compras;
-DROP TABLE IF EXISTS cartoes_credito;
+﻿
+
 DROP TABLE IF EXISTS contas_receber;
 DROP TABLE IF EXISTS contas_pagar;
 DROP TABLE IF EXISTS categorias;
 DROP TABLE IF EXISTS clientes;
-DROP TABLE IF EXISTS usuarios;
 DROP TABLE IF EXISTS contabilidades;
 
 CREATE TABLE contabilidades (
 	id INT PRIMARY KEY IDENTITY(1,1),
 	nome VARCHAR(45)
-);
-
-CREATE TABLE usuarios (
-	id INT PRIMARY KEY IDENTITY(1,1),
-	login VARCHAR(45),
-	senha VARCHAR(45),
-	data_nascimento DATETIME2,
-	id_contabilidade INT NOT NULL,
-	FOREIGN KEY (id_contabilidade) REFERENCES contabilidades(id)
 );
 
 CREATE TABLE clientes (
@@ -56,24 +46,6 @@ CREATE TABLE contas_receber (
 	data_pagamento DATETIME2,
 	valor DECIMAL(8,2)
 );
-
-CREATE TABLE cartoes_credito (
-	id INT PRIMARY KEY IDENTITY(1,1),
-	id_cliente INT NOT NULL,
-	FOREIGN KEY (id_cliente) REFERENCES clientes(id),
-	numero VARCHAR(45),
-	data_vencimento DATETIME2,
-	cvv VARCHAR(45)
-);
-
-CREATE TABLE compras (
-	id INT PRIMARY KEY IDENTITY(1,1),
-	id_cartao_credito INT NOT NULL,
-	FOREIGN KEY (id_cartao_credito) REFERENCES cartoes_credito(id),
-	valor DECIMAL(8,2),
-	data_compra DATETIME2
-);
-
 
 
 SELECT 

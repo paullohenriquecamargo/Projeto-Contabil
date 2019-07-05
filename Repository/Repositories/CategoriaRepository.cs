@@ -47,7 +47,7 @@ OUTPUT INSERTED.ID VALUES (@NOME)";
             return id;
         }
                                 
-        public Categoria ObterpeloId(int id)
+        public Categoria ObterPeloId(int id)
         {
             SqlCommand comando = Conexao.AbrirConexao();
             comando.CommandText = @"SELECT * FROM categorias WHERE id = @ID";
