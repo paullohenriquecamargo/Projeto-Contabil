@@ -34,7 +34,7 @@ namespace View.Controllers
             return View();
         }
 
-        public ActionResult Store(string nome, DateTime data)
+        public ActionResult Store(string nome, DateTime data, decimal valor, string idCategoria)
         {
             ContaReceber contaReceber = new ContaReceber();
             contaReceber.Nome = nome;
