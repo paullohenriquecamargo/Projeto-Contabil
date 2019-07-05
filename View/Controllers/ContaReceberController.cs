@@ -34,10 +34,14 @@ namespace View.Controllers
             return View();
         }
 
-        public ActionResult Store(string nome, DateTime data, decimal valor, string idCategoria)
+        public ActionResult Store(string nome, DateTime data, decimal valor, int idCategoria, int idCliente)
         {
             ContaReceber contaReceber = new ContaReceber();
             contaReceber.Nome = nome;
+            contaReceber.DataPagamento = data;
+            contaReceber.Valor = valor;
+            contaReceber.IdCategoria = idCategoria;
+            contaReceber.IdCliente = idCliente;
             repository.Inserir(contaReceber);
             return RedirectToAction("Index");
         }

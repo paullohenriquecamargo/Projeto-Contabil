@@ -8,6 +8,5 @@ namespace Model
     {
         public int Id;
         public string Nome;
-
     }
 }
