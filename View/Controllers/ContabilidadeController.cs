@@ -27,9 +27,9 @@ namespace View.Controllers
         }
         public ActionResult Cadastro()
         {
-            CategoriaRepository categoriaRepository = new CategoriaRepository();
-            List<Categoria> categoria = categoriaRepository.ObterTodos();
-            ViewBag.Categorias = categoria;
+            ContabilidadeRepository contabilidadeRepository = new ContabilidadeRepository();
+            List<Contabilidade> contabilidade = contabilidadeRepository.ObterTodos();
+            ViewBag.Contabilidades = contabilidade;
 
             return View();
         }
@@ -53,9 +53,9 @@ namespace View.Controllers
             Contabilidade contabilidade = repositorio.ObterPeloId(id);
             ViewBag.Contabilidade = contabilidade;
 
-            CategoriaRepository categoriaRepository = new CategoriaRepository();
-            List<Categoria> categorias = categoriaRepository.ObterTodos();
-            ViewBag.Categorias = categorias;
+            ContabilidadeRepository categoriaRepository = new ContabilidadeRepository();
+            List<Contabilidade> contabilidades = categoriaRepository.ObterTodos();
+            ViewBag.Contabilidades = contabilidade;
 
             return View();
         }
