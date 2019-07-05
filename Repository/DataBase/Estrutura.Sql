@@ -42,7 +42,7 @@ CREATE TABLE contas_receber (
 	id_categoria INT NOT NULL,
 	FOREIGN KEY (id_categoria) REFERENCES categorias(id),
 	nome VARCHAR(45),
-	data_pagamento DATETIME2,
+	data_pagamento DATETIME,
 	valor DECIMAL(8,2)
 );
 
