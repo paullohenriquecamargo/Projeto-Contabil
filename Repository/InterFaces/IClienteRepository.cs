@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,14 @@ namespace Repository.InterFaces
 {
     interface IClienteRepository
     {
+        int Inserir(Cliente cliente);
+
+        bool Alterar(Cliente cliente);
+
+        bool Apagar(int id);
+
+        List<Cliente> ObterTodos(string pesquisa);
+
+        Cliente ObterPeloId(int id);
     }
 }
