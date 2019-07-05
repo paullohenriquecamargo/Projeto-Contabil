@@ -17,7 +17,7 @@ namespace Repository.Repositories
         {
             SqlCommand comando = Conexao.AbrirConexao();
             comando.CommandText = @"UPDATE categorias SET 
-nome = @NOME,
+nome = @NOME
 WHERE id = @ID";
             comando.Parameters.AddWithValue("@NOME", categoria.Nome);
             comando.Parameters.AddWithValue("@ID", categoria.Id);
@@ -81,7 +81,7 @@ OUTPUT INSERTED.ID VALUES (@NOME)";
                     Id = Convert.ToInt32(linha["id"]),
                     Nome = linha["nome"].ToString()
                 };
-                Categorias.Add(categoria);
+                categorias.Add(categoria);
             }
             return categorias;
         }

@@ -17,7 +17,7 @@ namespace Repository.Repositories
         {
             SqlCommand comando = Conexao.AbrirConexao();
             comando.CommandText = @"UPDATE contabilidades SET
-nome = @NOME,
+nome = @NOME
 WHERE id = @ID";
             comando.Parameters.AddWithValue("@ID", contabilidade.Id);
             comando.Parameters.AddWithValue("@NOME", contabilidade.Nome);
@@ -29,7 +29,7 @@ WHERE id = @ID";
         public bool Apagar(int id)
         {
             SqlCommand comando = Conexao.AbrirConexao();
-            comando.CommandText = "DELETE FROM contabilidade WHERE id = @ID";
+            comando.CommandText = "DELETE FROM contabilidades WHERE id = @ID";
             comando.Parameters.AddWithValue("@ID", id);
             int quantidade = comando.ExecuteNonQuery();
             comando.Connection.Close();
@@ -52,7 +52,7 @@ VALUES (@NOME)";
         public Contabilidade ObterPeloId(int id)
         {
             SqlCommand comando = Conexao.AbrirConexao();
-            comando.CommandText = "SELECT * FROM contabilidades contabilidade WHERE id =@ID";
+            comando.CommandText = "SELECT * FROM contabilidades WHERE id =@ID";
             comando.Parameters.AddWithValue("@ID", id);
             DataTable tabela = new DataTable();
             tabela.Load(comando.ExecuteReader());
@@ -68,12 +68,13 @@ VALUES (@NOME)";
             return contabilidade;
         }
 
-        public List<Contabilidade> ObterTodos(string pesquisa)
+        public List<Contabilidade> ObterTodos()
         {
             SqlCommand comando = Conexao.AbrirConexao();
             comando.CommandText = @"SELECT * FROM contabilidades";
             DataTable tabela = new DataTable();
             tabela.Load(comando.ExecuteReader());
+
             comando.Connection.Close();
             List<Contabilidade> contabilidades = new List<Contabilidade>();
             foreach (DataRow linha in tabela.Rows)

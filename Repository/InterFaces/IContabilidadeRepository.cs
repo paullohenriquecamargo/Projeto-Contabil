@@ -15,7 +15,7 @@ namespace Repository.InterFaces
 
         bool Apagar(int id);
 
-        List<Contabilidade> ObterTodos(string pesquisa);
+        List<Contabilidade> ObterTodos();
 
         Contabilidade ObterPeloId(int id);
     }

@@ -26,6 +26,7 @@ namespace View.Controllers
         }
         public ActionResult Cadastro()
         {
+
             return View();
         }
 
