@@ -71,13 +71,7 @@ VALUES (@NOME)";
         public List<Contabilidade> ObterTodos(string pesquisa)
         {
             SqlCommand comando = Conexao.AbrirConexao();
-            comando.CommandText = @"SELECT
-categorias.Id AS 'CategoriaId',
-categorias.nome AS 'CategoriaNome',
-categorias.Id AS 'ID',
-categorias.Nome AS 'Nome'
-FROM contabilidades
-INNER JOIN categorias ON(contabilidade.id_categoria = categorias.id)";
+            comando.CommandText = @"SELECT * FROM contabilidades";
             DataTable tabela = new DataTable();
             tabela.Load(comando.ExecuteReader());
             comando.Connection.Close();
@@ -87,9 +81,6 @@ INNER JOIN categorias ON(contabilidade.id_categoria = categorias.id)";
                 Contabilidade contabilidade = new Contabilidade();
                 contabilidade.Id = Convert.ToInt32(linha["id"]);
                 contabilidade.Nome = linha["nome"].ToString();
-                contabilidade.Categoria = new Categoria();
-                contabilidade.Id = Convert.ToInt32(linha["CategoriasId"]);
-                contabilidade.Nome = linha["Categorianome"].ToString();
                 contabilidades.Add(contabilidade);
             }
             return contabilidades;

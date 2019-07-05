@@ -84,6 +84,8 @@ OUTPUT INSERTED.ID VALUES (@NOME)";
                 contabilidades.Add(contabilidade);
             }
             return contabilidades;
-        }                                                               
+        }
+
+       
     }
 }
