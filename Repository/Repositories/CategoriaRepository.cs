@@ -29,7 +29,7 @@ WHERE id = @ID";
         public bool Apagar(int id)
         {
             SqlCommand comando = Conexao.AbrirConexao();
-            comando.CommandText = @"DELETE FROM contabilidades WHERE id = @ID";
+            comando.CommandText = @"DELETE FROM categorias WHERE id = @ID";
             comando.Parameters.AddWithValue("@ID", id);
             int quantidade = comando.ExecuteNonQuery();
             comando.Connection.Close();
@@ -39,7 +39,7 @@ WHERE id = @ID";
         public int Inserir(Categoria categoria)
         {
             SqlCommand comando = Conexao.AbrirConexao();
-            comando.CommandText = @"INSERT INTO (nome) 
+            comando.CommandText = @"INSERT INTO categorias (nome) 
 OUTPUT INSERTED.ID VALUES (@NOME)";
             comando.Parameters.AddWithValue("@NOME", categoria.Nome);
             int id = Convert.ToInt32(comando.ExecuteScalar());
@@ -60,10 +60,10 @@ OUTPUT INSERTED.ID VALUES (@NOME)";
                 return null;
             }
             DataRow linha = tabela.Rows[0];
-            Categoria contabilidade = new Categoria();
-            contabilidade.Id = Convert.ToInt32(linha["id"]);
-            contabilidade.Nome = linha["nome"].ToString();
-            return contabilidade;
+            Categoria categoria = new Categoria();
+            categoria.Id = Convert.ToInt32(linha["id"]);
+            categoria.Nome = linha["nome"].ToString();
+            return categoria;
         }
 
         public List<Categoria> ObterTodos()
@@ -73,17 +73,17 @@ OUTPUT INSERTED.ID VALUES (@NOME)";
             DataTable tabela = new DataTable();
             tabela.Load(comando.ExecuteReader());
 
-            List<Categoria> contabilidades = new List<Categoria>();
+            List<Categoria> categorias = new List<Categoria>();
             foreach(DataRow linha in tabela.Rows)
             {
-                Categoria contabilidade = new Categoria()
+                Categoria categoria = new Categoria()
                 {
                     Id = Convert.ToInt32(linha["id"]),
                     Nome = linha["nome"].ToString()
                 };
-                contabilidades.Add(contabilidade);
+                Categorias.Add(categoria);
             }
-            return contabilidades;
+            return categorias;
         }
 
        
