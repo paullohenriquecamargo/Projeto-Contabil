@@ -3,5 +3,37 @@
     ViewBag.Title = "Cadastro";
 }
 
-<h2>Cadastro</h2>
+<h2>Cadastro de Contabilidade</h2>
 
+<form action="@Url.Action("Store")" method="post">
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label for="campo-categoria">Categoria </label>
+                <select id="campo-categoria" name="idCategoria"
+                        class="form-control">
+                    <option disabled="disabled" selected="selected">Selecione uma Categoria</option>
+                    @foreach (Model.Categoria categoria in ViewBag.Categorias)
+                    {
+                        <option value="@categoria.Id">@categoria.Nome</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label for="campo-nome">Nome</label>
+                <input type="text" name="nome" id="campo-nome" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <button class="btn btn-success" type="submit"><i class="fas fa-save"></i> Salvar</button>
+        </div>
+    </div>
+</form>
