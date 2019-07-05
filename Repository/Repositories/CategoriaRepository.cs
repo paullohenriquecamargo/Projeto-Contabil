@@ -84,6 +84,8 @@ OUTPUT INSERTED.ID VALUES (@NOME)";
                 categorias.Add(categoria);
             }
             return categorias;
-        }                                                               
+        }
+
+       
     }
 }
