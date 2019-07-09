@@ -14,5 +14,6 @@ namespace Model
         public decimal Valor;
 
         public Categoria Categoria;
+        public Cliente Cliente;
     }
 }
