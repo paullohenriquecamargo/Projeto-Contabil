@@ -62,3 +62,4 @@ INNER JOIN clientes ON (contas_receber.id_cliente = clientes.id)
 INNER JOIN categorias ON (contas_receber.id_categoria = categorias.id)
 
 SELECT nome FROM clientes;
+SELECT cpf FROM clientes;
