@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Editar";
+}
+
+<h3>Editar Contas Receber</h3>
+<form action="@Url.Action("Update")" method="POST">
+    <input type="hidden" name="id" value="@ViewBag.ContaReceber.Id" />
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label for="campo-contaReceber">Conta Receber</label>
+                <select id="campo-contaReceber" name="contaReceber"
+                        class="form-control">
+                    @foreach(Model.ContaReceber contaReceber in ViewBag.ContaReceber)
+                    {
+                        if(contaReceber.Id == ViewBag.ContaReceber.Id)
+                        {
+                            <option value="@contaReceber.Id" selected="selected">@contaReceber.Nome</option>
+                        }
+                        else
+                        {
+                            <option value="@contaReceber.Id">@contaReceber.Nome</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label for="campo-nome">Nome</label>
+                <input type="text" name="nome" class="form-control"
+                       id="campo-nome" value="@ViewBag.ContaReceber.Nome" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <button class="btn btn-success" type="submit">
+                <i class="fas fa-save"></i> Salvar
+            </button>
+        </div>
+    </div>
+</form>
