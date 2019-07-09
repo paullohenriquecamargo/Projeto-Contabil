@@ -15,7 +15,7 @@ namespace Repository.InterFaces
 
         bool Apagar(int id);
 
-        List<Cliente> ObterTodos(string pesquisa);
+        List<Cliente> ObterTodos();
 
         Cliente ObterPeloId(int id);
     }
