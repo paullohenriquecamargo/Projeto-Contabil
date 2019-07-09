@@ -49,7 +49,7 @@ namespace View.Controllers
             repository.Apagar(id);
             return RedirectToAction("Index");
         }
-
+        
         public ActionResult Editar(int id)
         {
             ContaPagar contaPagar = repository.ObterPeloId(id);
