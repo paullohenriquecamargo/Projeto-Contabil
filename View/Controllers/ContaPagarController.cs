@@ -41,12 +41,29 @@ namespace View.Controllers
             contaPagar.IdCliente = idCliente;
             contaPagar.IdCategoria = idCategoria;
             repository.Inserir(contaPagar);
-            return RedirectToACtion("Index");
+            return RedirectToAction("Index");
         }
 
         public ActionResult Apagar(int id)
         {
+            repository.Apagar(id);
+            return RedirectToAction("Index");
+        }
 
+        public ActionResult Editar(int id)
+        {
+            ContaPagar contaPagar = repository.ObterPeloId(id);
+            ViewBag.ContaPagar = contaPagar;
+            return View();
+        }
+
+        public ActionResult Update(int id, string nome, DateTime dataPagamento, DateTime dataVencimento, decimal valor)
+        {
+            ContaPagar contaPagar = new ContaPagar();
+            contaPagar.Id = id;
+            contaPagar.Nome = nome;
+            repository.Alterar(contaPagar);
+            return RedirectToAction("Index");
         }
     }
 }
