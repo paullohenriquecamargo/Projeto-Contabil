@@ -17,7 +17,9 @@ namespace Repository.Repositories
         {
             SqlCommand comando = Conexao.AbrirConexao();
             comando.CommandText = @"UPDATE clientes SET
-nome = @NOME WHERE id = @ID";
+nome = @NOME,
+cpf = @CPF
+WHERE id = @ID";
             comando.Parameters.AddWithValue("@NOME", cliente.Nome);
             comando.Parameters.AddWithValue("@ID", cliente.Id);
             int quantidade = comando.ExecuteNonQuery();
@@ -38,9 +40,10 @@ nome = @NOME WHERE id = @ID";
         public int Inserir(Cliente cliente)
         {
             SqlCommand comando = Conexao.AbrirConexao();
-            comando.CommandText = @"INSERT INTO clientes (nome)
-OUTPUT INSERTED.ID VALUES (@NOME)";
+            comando.CommandText = @"INSERT INTO clientes (nome, cpf, )
+OUTPUT INSERTED.ID VALUES (@NOME, @CPF)";
             comando.Parameters.AddWithValue("@NOME", cliente.Nome);
+            comando.Parameters.AddWithValue("@CPF", cliente.Cpf);
             int id = Convert.ToInt32(comando.ExecuteScalar());
             comando.Connection.Close();
             return id;            
@@ -76,9 +79,12 @@ OUTPUT INSERTED.ID VALUES (@NOME)";
             List<Cliente> clientes = new List<Cliente>();
             foreach(DataRow linha in tabela.Rows)
             {
-                Cliente cliente = new Cliente();                
-                cliente.Id = Convert.ToInt32(linha["id"]);
-                cliente.Nome = linha["nome"].ToString();                
+                Cliente cliente = new Cliente()
+                {
+                    Id = Convert.ToInt32(linha["id"]),
+                    Nome = linha["nome"].ToString(),
+                    Cpf = linha["cpf"].ToString()
+                };
                 clientes.Add(cliente);
             }
             return clientes;

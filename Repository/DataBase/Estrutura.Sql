@@ -60,3 +60,5 @@ contas_receber.valor AS 'ContaReceberValor'
 FROM contas_receber
 INNER JOIN clientes ON (contas_receber.id_cliente = clientes.id)
 INNER JOIN categorias ON (contas_receber.id_categoria = categorias.id)
+
+SELECT nome FROM clientes;
