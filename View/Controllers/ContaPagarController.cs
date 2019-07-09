@@ -40,7 +40,13 @@ namespace View.Controllers
             contaPagar.Valor = valor;
             contaPagar.IdCliente = idCliente;
             contaPagar.IdCategoria = idCategoria;
-            repository.Inserir(conta)
+            repository.Inserir(contaPagar);
+            return RedirectToACtion("Index");
+        }
+
+        public ActionResult Apagar(int id)
+        {
+
         }
     }
 }
