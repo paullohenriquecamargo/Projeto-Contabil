@@ -1,4 +1,4 @@
-﻿DROP TABLE IF EXISTS contas_receber;
+﻿	DROP TABLE IF EXISTS contas_receber;
 DROP TABLE IF EXISTS contas_pagar;
 DROP TABLE IF EXISTS categorias;
 DROP TABLE IF EXISTS clientes;

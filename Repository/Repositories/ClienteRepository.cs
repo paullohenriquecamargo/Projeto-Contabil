@@ -40,10 +40,11 @@ WHERE id = @ID";
         public int Inserir(Cliente cliente)
         {
             SqlCommand comando = Conexao.AbrirConexao();
-            comando.CommandText = @"INSERT INTO clientes (nome, cpf, )
-OUTPUT INSERTED.ID VALUES (@NOME, @CPF)";
+            comando.CommandText = @"INSERT INTO clientes (nome, cpf, id_contabilidade)
+OUTPUT INSERTED.ID VALUES (@NOME, @CPF, @ID_CONTABILIDADE)";
             comando.Parameters.AddWithValue("@NOME", cliente.Nome);
             comando.Parameters.AddWithValue("@CPF", cliente.Cpf);
+            comando.Parameters.AddWithValue("@ID_CONTABILIDADE", cliente.IdContabilidade);
             int id = Convert.ToInt32(comando.ExecuteScalar());
             comando.Connection.Close();
             return id;            
