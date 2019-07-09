@@ -65,7 +65,7 @@ OUTPUT INSERTED.ID VALUES (@NOME)";
             return cliente;
         }
 
-        public List<Cliente> ObterTodos(string pesquisa)
+        public List<Cliente> ObterTodos()
         {
             SqlCommand comando = Conexao.AbrirConexao();
             comando.CommandText = "SELECT * FROM clientes";
@@ -76,11 +76,9 @@ OUTPUT INSERTED.ID VALUES (@NOME)";
             List<Cliente> clientes = new List<Cliente>();
             foreach(DataRow linha in tabela.Rows)
             {
-                Cliente cliente = new Cliente()
-                {
-                    Id = Convert.ToInt32(linha["id"]),
-                    Nome = linha["nome"].ToString()
-                };
+                Cliente cliente = new Cliente();                
+                cliente.Id = Convert.ToInt32(linha["id"]);
+                cliente.Nome = linha["nome"].ToString();                
                 clientes.Add(cliente);
             }
             return clientes;
