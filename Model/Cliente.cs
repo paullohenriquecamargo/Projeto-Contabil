@@ -7,7 +7,7 @@ namespace Model
     public class Cliente
     {
         public int Id;
-        public int Id_contabilidade;
+        public int IdContabilidade;
         public string Nome;
         public string Cpf;
         

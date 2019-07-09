@@ -9,31 +9,14 @@
     <div class="row">
         <div class="col-12">
             <div class="form-group">
-                <label for="campo-categoria">Categoria </label>
-                <select id="campo-categoria" name="idCategoria"
-                        class="form-control">
-                    <option disabled="disabled" selected="selected">Selecione uma Categoria</option>
-                    @foreach (Model.Categoria categoria in ViewBag.Categorias)
-                    {
-                        <option value="@categoria.Id">@categoria.Nome</option>
-                    }
-                </select>
+                <label for="campo-contabilidade">Contabilidade </label>
+                <input type="text" name="contabilidade" id="campo-contabilidade" />                             
             </div>
         </div>
     </div>
 
     <div class="row">
         <div class="col-12">
-            <div class="form-group">
-                <label for="campo-nome">Nome</label>
-                <input type="text" name="nome" id="campo-nome" class="form-control" />
-            </div>
+            <button class="btn btn-success" type="submit"><i class="glyphicon-fast-backward fa-save"></i> Salvar</button>
         </div>
     </div>
-
-    <div class="row">
-        <div class="col-12">
-            <button class="btn btn-success" type="submit"><i class="fas fa-save"></i> Salvar</button>
-        </div>
-    </div>
-</form>
