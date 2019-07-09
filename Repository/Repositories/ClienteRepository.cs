@@ -43,8 +43,7 @@ OUTPUT INSERTED.ID VALUES (@NOME)";
             comando.Parameters.AddWithValue("@NOME", cliente.Nome);
             int id = Convert.ToInt32(comando.ExecuteScalar());
             comando.Connection.Close();
-            return id;
-            
+            return id;            
         }
 
         public Cliente ObterPeloId(int id)
