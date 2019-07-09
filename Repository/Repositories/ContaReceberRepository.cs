@@ -83,7 +83,6 @@ WHERE id = @ID";
             return contaReceber;
         }
 
-
         public List<ContaReceber> ObterTodos()
         {
             SqlCommand comando = Conexao.AbrirConexao();
@@ -115,6 +114,10 @@ INNER JOIN categorias ON (contas_receber.id_categoria = categorias.id)";
                 contaReceber.Categoria = new Categoria();
                 contaReceber.Categoria.Id = Convert.ToInt32(linha["CategoriaId"]);
                 contaReceber.Categoria.Nome = linha["CategoriaNome"].ToString();
+                contaReceber.Cliente = new Cliente();
+                contaReceber.Cliente.Id = Convert.ToInt32(linha["ClienteId"]);
+                contaReceber.Cliente.Nome = linha["ClienteNome"].ToString();
+                contaReceber.Cliente.Cpf = linha["ClienteCpf"].ToString();
                 contasReceber.Add(contaReceber);                
             }
             return contasReceber;
