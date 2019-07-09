@@ -9,8 +9,15 @@
     <div class="row">
         <div class="col-12">
             <div class="form-group">
-                <label for="campo-contabilidade">Contabilidade </label>
-                <input type="text" name="contabilidade" id="campo-contabilidade" />                             
+                <label for="campo-categoria">Categoria </label>
+                <select id="campo-categoria" name="idCategoria"
+                        class="form-control">
+                    <option disabled="disabled" selected="selected">Selecione uma Categoria</option>
+                    @foreach (Model.Contabilidade contabilidade in ViewBag.Contabilidade)
+                    {
+                        <option value="@contabilidade.Id">@contabilidade.Nome</option>
+                    }
+                </select>
             </div>
         </div>
     </div>
